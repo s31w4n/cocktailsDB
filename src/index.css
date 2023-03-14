@@ -367,11 +367,6 @@ Cocktail
     padding-top: 0;
   }
 }
-@media screen and (max-width: 768px) {
-  .single-cocktail-link {
-    text-align: center;
-  }
-}
 
 /* loader */
 .loader,
