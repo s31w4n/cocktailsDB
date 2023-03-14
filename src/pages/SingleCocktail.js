@@ -72,9 +72,11 @@ const SingleCocktail = () => {
     cocktail;
   return (
     <section className="section cocktail-section">
-      <Link to="/" className="btn btn-primary">
-        back home
-      </Link>
+      <div className="single-cocktail-link">
+        <Link to="/" className="btn btn-primary">
+          back home
+        </Link>
+      </div>
       <h2 className="section-title">{name}</h2>
       <div className="drink">
         <img src={image} alt={name} />
@@ -92,13 +94,15 @@ const SingleCocktail = () => {
             <span className="drink-data">glass :</span> {glass}
           </p>
           <p>
-            <span className="drink-data">instructions :</span> {instructions}
-          </p>
-          <p>
             <span className="drink-data">ingredients :</span>
             {ingredients.map((item, index) => {
-              return item ? <span key={index}> {item}</span> : null;
+              console.log(ingredients);
+              console.log(ingredients[ingredients.length - 1]);
+              return item ? <span key={index}>{item}</span> : null;
             })}
+          </p>
+          <p>
+            <span className="drink-data">instructions :</span> {instructions}
           </p>
         </div>
       </div>
