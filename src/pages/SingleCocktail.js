@@ -4,7 +4,7 @@ import Loading from "../components/Loading";
 
 const url = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
 
-export default function SingleCocktail() {
+const SingleCocktail = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [cocktail, setCocktail] = useState(null);
@@ -67,7 +67,7 @@ export default function SingleCocktail() {
 
   const { name, image, category, info, glass, instructions, ingredients } =
     cocktail;
-    
+
   return (
     <section className="section cocktail-section">
       <div className="single-cocktail-link">
@@ -104,4 +104,5 @@ export default function SingleCocktail() {
       </div>
     </section>
   );
-}
+};
+export default SingleCocktail;
