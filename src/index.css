@@ -171,6 +171,15 @@ Navbar
 .logo {
   width: 12rem;
 }
+@media screen and (max-width: 560px) {
+  .nav-links {
+    display: none;
+  }
+  .nav-center{
+    align-items: center;
+    justify-content: center;
+  }
+}
 /* 
 ====== 
 About
@@ -314,6 +323,11 @@ Form
 }
 .form-control input::placeholder {
   letter-spacing: 0.15rem;
+}
+@media screen and (max-width: 560px){
+  .form-control label{
+    text-align: center;
+  }
 }
 /* 
 ====== 
