@@ -6,7 +6,7 @@ Variables
 ======
 */
 :root {
-  --primaryLightColor: #7fc77f;
+  --primaryLightColor: #b5fe83;
   --primaryColor: #476a2e;
   --primaryDarkColor: #c02c03;
   --mainWhite: #fff;
@@ -24,7 +24,7 @@ Variables
   --mainBorderRadius: 0.25rem;
   --smallWidth: 95vw;
   --maxWidth: 40rem;
-  --fullWidth: 95%;
+  --fullWidth: 85%;
 }
 
 .light-theme {
@@ -45,7 +45,7 @@ Variables
 }
 .dark-theme {
   --primaryLightColor: #7fc77f;
-  --primaryColor: #476a2e;
+  --primaryColor: #5fd068;
   --primaryDarkColor: #c02c03;
   --mainWhite: #2b3945;
   --offWhite: #fce77d;
@@ -148,7 +148,7 @@ Buttons
 }
 .btn-primary:hover {
   background: var(--primaryLightColor);
-  color: var(--primaryColor);
+  color: var(--mainBlack);
 }
 .btn-block {
   width: 100%;
@@ -192,7 +192,7 @@ Navbar
   gap: 10px;
 }
 .logo-title {
-  margin-bottom: 0;
+  margin: auto 0;
   font-family: "Italianno", cursive;
   font-size: 2rem;
   color: var(--white);
@@ -329,6 +329,7 @@ Form
   border-radius: var(--mainBorderRadius);
   box-shadow: #1d1d1d80 0 5px 20px;
 }
+
 .form-control {
   display: flex;
   justify-content: center;
@@ -352,6 +353,7 @@ Form
   border-radius: var(--mainBorderRadius);
   font-size: 1.2rem;
   outline: none;
+  color: var(--mainBlack);
 }
 .form-control input::placeholder {
   letter-spacing: 0.1rem;
@@ -370,12 +372,13 @@ Form
   align-items: center;
   text-align: center;
   width: 15rem;
-  margin-top: var(--mainBorderRadius);
+  margin-top: 0.5rem;
   border-radius: 0.5rem;
   background: var(--mainWhite);
   z-index: 100;
-  transition: all 0.3s ease-in;
+  transition: transform 0.2s ease-in-out;
   color: var(--white);
+  transform: scale(1);
 }
 .dropdown-btn {
   width: 100%;
@@ -384,7 +387,8 @@ Form
   border-radius: none;
 }
 .show-dropdown {
-  display: none;
+  visibility: visible;
+  transform: scale(0);
 }
 .btn-filters {
   display: flex;
@@ -401,7 +405,7 @@ Form
 .filter-container p {
   margin-bottom: 0;
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 785px) {
   .search {
     flex-direction: column;
     align-items: flex-start;
@@ -445,7 +449,6 @@ Cocktail
   background: var(--primaryLightColor);
   padding: 0.25rem 0.5rem;
   border-radius: var(--mainBorderRadius);
-  color: var(--primaryColor);
 }
 .drink-info {
   padding-top: 2rem;
@@ -520,5 +523,27 @@ Cocktail
   40% {
     box-shadow: 0 -2em;
     height: 5em;
+  }
+}
+@media screen and (max-width: 560px) {
+  .search-form {
+    width: 20rem;
+  }
+  .form-control ::placeholder {
+    font-size: 1rem;
+  }
+  .logo h1 {
+    margin-bottom: 0;
+  }
+  .logo-title {
+    font-size: 1.5rem;
+    line-height: 1.6rem;
+  }
+  .icon svg {
+    width: 15px;
+    height: 15px;
+  }
+  .theme {
+    font-size: 1rem;
   }
 }

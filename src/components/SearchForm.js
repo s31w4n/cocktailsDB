@@ -1,31 +1,18 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useGlobalContext } from "../context";
 import { BiSearchAlt2 } from "react-icons/bi";
-import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
+import Filter from "./Filter";
 
 const SearchForm = () => {
-  const [showFilters, setShowFilters] = useState(false);
-  const { setSearchTerm, category, setCategory } = useGlobalContext();
+  const { setSearchTerm } = useGlobalContext();
   const searchValue = useRef("");
-  const filterOptions = [
-    "All",
-    "Cocktail",
-    "Ordinary Drink",
-    "Other / Unknown",
-  ];
 
   useEffect(() => {
     searchValue.current.focus();
   }, []);
-  console.log(category);
 
   const searchCocktail = () => {
     setSearchTerm(searchValue.current.value);
-  };
-
-  const handleFilter = (category) => {
-    setCategory(category);
-    setShowFilters(false);
   };
 
   const handleSubmit = (event) => {
@@ -48,29 +35,7 @@ const SearchForm = () => {
           />
         </div>
       </form>
-      <div className="filter-container">
-        <button
-          type="button"
-          className="btn btn-filters"
-          onClick={() => setShowFilters(!showFilters)}
-        >
-          <p>{category !== "All" ? category : "filter by category"}</p>
-          {showFilters ? <IoMdArrowDropdown /> : <IoMdArrowDropup />}
-        </button>
-        <div className={!showFilters ? "dropdown show-dropdown" : "dropdown"}>
-          {filterOptions.map((item, index) => {
-            return (
-              <button
-                key={index}
-                className="btn dropdown-btn"
-                onClick={() => handleFilter(item)}
-              >
-                {item}
-              </button>
-            );
-          })}
-        </div>
-      </div>
+      <Filter />
     </section>
   );
 };
