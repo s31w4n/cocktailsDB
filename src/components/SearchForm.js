@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { useGlobalContext } from "../context";
 import { BiSearchAlt2 } from "react-icons/bi";
 import Filter from "./Filter";
