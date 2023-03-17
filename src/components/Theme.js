@@ -33,7 +33,7 @@ const Theme = () => {
       ) : (
         <GiSun style={{ color: "#fbbb05" }} />
       )}
-      {theme === "light-theme" ? "light" : "dark"} Mode
+      {theme === "light-theme" ? "dark" : "light"} Mode
     </div>
   );
 };
