@@ -438,7 +438,6 @@ Cocktail
   border-radius: var(--mainBorderRadius);
 }
 .drink p {
-  font-weight: bold;
   text-transform: capitalize;
   line-height: 1.8;
 }
