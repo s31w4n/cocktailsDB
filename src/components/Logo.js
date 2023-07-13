@@ -1,14 +1,11 @@
-import React from "react";
-import { FaGlassCheers } from "react-icons/fa";
+import React from 'react';
 
 const Logo = () => {
   return (
-    <div className="logo">
-      <span className="icon">
-        <FaGlassCheers />
-      </span>
-      <h1 className="logo-title">Cocktails DB</h1>
-    </div>
+    <h3 className="logo">
+      Cocktails
+      <span className="icon">DB</span>
+    </h3>
   );
 };
 
