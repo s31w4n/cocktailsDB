@@ -204,6 +204,12 @@ Navbar
   font-size: 1rem;
   color: var(--white);
 }
+
+@media screen and (max-width: 500px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+}
 /* 
 ====== 
 Error
