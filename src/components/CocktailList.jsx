@@ -1,18 +1,17 @@
-import React from "react";
-import Cocktail from "./Cocktail";
-import Loading from "./Loading";
-import { useGlobalContext } from "../context";
+import { formatDrinks } from '../utils';
+import Cocktail from './Cocktail';
 
-const CocktailList = () => {
-  const { cocktails, loading } = useGlobalContext();
-
-  if (loading) {
-    return <Loading />;
+const CocktailList = ({ data }) => {
+  if (!data) {
+    return <h4 className="section-title">No matching cocktails found!</h4>;
   }
+
+  const cocktails = formatDrinks(data);
 
   if (cocktails.length < 1) {
     return <h2 className="section-title">no cocktails matched</h2>;
   }
+
   return (
     <section className="section">
       <div className="cocktails-center">

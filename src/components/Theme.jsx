@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { BsFillSunFill } from 'react-icons/bs';
-import { BsMoonFill } from 'react-icons/bs';
+import { useState, useEffect } from 'react';
+import { BsFillSunFill, BsMoonFill } from 'react-icons/bs';
 
 const getStorageTheme = () => {
   let theme = 'light-theme';
@@ -33,7 +32,7 @@ const Theme = () => {
       ) : (
         <BsFillSunFill style={{ color: '#fbbb05' }} />
       )}
-      {theme === 'light-theme' ? 'dark' : 'light'} Mode
+      <span> {theme === 'light-theme' ? 'dark' : 'light'} Mode</span>
     </div>
   );
 };

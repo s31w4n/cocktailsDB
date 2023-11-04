@@ -1,7 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Logo from "./Logo";
-import Theme from "./Theme";
+import { Link } from 'react-router-dom';
+import { Logo, Theme } from '.';
 
 const Navbar = () => {
   return (

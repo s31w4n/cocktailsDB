@@ -6,8 +6,8 @@ Variables
 ======
 */
 :root {
-  --primaryLightColor: #b5fe83;
-  --primaryColor: #476a2e;
+  --primaryLightColor: #059669;
+  --primaryColor: #10b981;
   --primaryDarkColor: #c02c03;
   --mainWhite: #fff;
   --offWhite: #fce77d;
@@ -33,7 +33,7 @@ Variables
   --primaryDarkColor: #c02c03;
   --mainWhite: #fff;
   --offWhite: #fce77d;
-  --mainBackground: #fcf9f9;
+  --mainBackground: #f8fafc;
   --mainOverlay: rgba(35, 10, 36, 0.4);
   --mainBlack: #222;
   --mainGrey: #ececec;
@@ -113,7 +113,6 @@ Buttons
 ======
 */
 .btn,
-.btn-white,
 .btn-primary {
   text-transform: uppercase;
   letter-spacing: var(--mainSpacing);
@@ -126,44 +125,29 @@ Buttons
   font-size: 0.8rem;
   background: transparent;
   border-radius: var(--mainBorderRadius);
-  display: inline-block;
 }
 .btn:hover {
   background: var(--primaryColor);
   color: var(--mainWhite);
 }
-.btn-white {
-  background: transparent;
-  color: var(--mainWhite);
-  border-color: var(--mainWhite);
-}
-.btn-white:hover {
-  background: var(--mainWhite);
-  color: var(--primaryColor);
-}
 .btn-primary {
   background: var(--primaryColor);
-  color: var(--mainWhite);
+  color: #fff;
   border-color: transparent;
 }
 .btn-primary:hover {
   background: var(--primaryLightColor);
-  color: var(--mainBlack);
-}
-.btn-block {
-  width: 100%;
-  display: block;
-  margin: 0 auto;
-  box-shadow: var(--lightShadow);
-  text-align: center;
+  color: #fff;
 }
 .btn-details {
-  padding: 0.25rem 0.4rem;
+  padding: 0.25rem 0.5rem;
 }
-.btn-details:hover {
-  background: var(--primaryLightColor);
-  border-color: var(--primaryLightColor);
+.btn-search {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border: none;
 }
+
 /* 
 ====== 
 Navbar
@@ -195,14 +179,19 @@ Navbar
 }
 
 .theme {
-  font-family: 'Array', sans-serif;
+  font-family: sans-serif;
   display: flex;
   align-items: center;
   gap: 10px;
   text-transform: capitalize;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: var(--white);
+  font-weight: 600;
+}
+
+.theme span {
+  font-size: 1rem;
 }
 
 @media screen and (max-width: 500px) {
@@ -216,8 +205,28 @@ Error
 ======
 */
 .error-page {
+  min-height: 100vh;
+  text-align: center;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+}
+.error-page img {
+  width: 90vw;
+  max-width: 600px;
+  display: block;
+  margin-bottom: 2rem;
+  margin-top: -3rem;
+}
+.error-page h3 {
+  margin-bottom: 0.5rem;
+}
+.error-page p {
+  line-height: 1.5;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--grey-500);
 }
 .error-container {
   text-align: center;
@@ -252,7 +261,7 @@ Cocktails List
   margin: 0 auto;
   display: grid;
   row-gap: 2rem;
-  column-gap: 3rem;
+  column-gap: 2rem;
 }
 @media screen and (min-width: 576px) {
   .cocktails-center {
@@ -267,7 +276,6 @@ Cocktail
 
 .cocktail {
   background: var(--mainWhite);
-  margin-bottom: 1rem;
   box-shadow: var(--lightShadow);
   transition: var(--mainTransition);
   display: grid;
@@ -314,10 +322,11 @@ Form
 }
 
 .search-form {
-  width: 25rem;
+  width: auto;
   text-transform: capitalize;
   border-radius: var(--mainBorderRadius);
   box-shadow: #1d1d1d80 0 5px 20px;
+  display: flex;
 }
 
 .form-control {
@@ -328,18 +337,21 @@ Form
   background: var(--mainWhite);
   padding: 0.5rem;
   border-radius: var(--mainBorderRadius);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .form-control label {
   display: flex;
   font-size: 1.4rem;
-  font-weight: bold;
+  font-weight: normal;
 }
 .form-control input {
-  width: 100%;
+  width: 335px;
   border: none;
   border-color: transparent;
   background: var(--mainWhite);
+  background-color: transparent;
   border-radius: var(--mainBorderRadius);
   font-size: 1.2rem;
   outline: none;
@@ -386,6 +398,7 @@ Form
   justify-content: center;
   gap: 10px;
   width: 100%;
+  height: 38px;
   text-align: center;
   border: none;
 }
@@ -395,7 +408,7 @@ Form
 .filter-container p {
   margin-bottom: 0;
 }
-@media screen and (max-width: 785px) {
+@media screen and (max-width: 868px) {
   .search {
     flex-direction: column;
     align-items: flex-start;
@@ -435,9 +448,11 @@ Cocktail
   margin-right: 0.5rem;
 }
 .drink-data {
-  background: var(--primaryColor);
+  background: #34d399;
   padding: 0.25rem 0.5rem;
   border-radius: var(--mainBorderRadius);
+  color: #065f46;
+  font-weight: 600;
 }
 .drink-info {
   padding-top: 2rem;
