@@ -322,11 +322,11 @@ Form
 }
 
 .search-form {
-  width: auto;
   text-transform: capitalize;
   border-radius: var(--mainBorderRadius);
   box-shadow: #1d1d1d80 0 5px 20px;
   display: flex;
+  width: 200px;
 }
 
 .form-control {
@@ -347,7 +347,7 @@ Form
   font-weight: normal;
 }
 .form-control input {
-  width: 335px;
+  width: 200px;
   border: none;
   border-color: transparent;
   background: var(--mainWhite);

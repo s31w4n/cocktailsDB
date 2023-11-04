@@ -16,7 +16,7 @@ const SearchForm = ({ searchTerm }) => {
           <input
             type="search"
             name="search"
-            placeholder="search your favorite cocktail 🥂"
+            placeholder="search cocktail 🥂"
             defaultValue={searchTerm}
             autoComplete="off"
           />
