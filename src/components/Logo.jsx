@@ -1,0 +1,10 @@
+function Logo() {
+  return (
+    <h3 className="logo">
+      Cocktails
+      <span className="icon">DB</span>
+    </h3>
+  );
+}
+
+export default Logo;

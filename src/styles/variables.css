@@ -1,0 +1,29 @@
+:root {
+  --primaryDarkColor: #c02c03;
+  --offWhite: #fce77d;
+  --mainOverlay: rgba(35, 10, 36, 0.4);
+  --mainGrey: #ececec;
+  --darkGrey: #afafaf;
+  --mainRed: #bd0303;
+  --mainTransition: all 0.1s linear;
+  --mainSpacing: 0.1rem;
+  --mainBorderRadius: 0.25rem;
+  --smallWidth: 95vw;
+  --maxWidth: 40rem;
+  --fullWidth: 85%;
+  --white: #fff;
+
+  --primaryLightColor: #059669;
+  --primaryColor: #10b981;
+  --mainWhite: #fff;
+  --mainBackground: #fcf9f9;
+  --mainBlack: #222;
+  --lightShadow: 0 15px 20px #0003;
+  --darkShadow: 4px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+:root.dark-theme {
+  --mainWhite: #2b3945;
+  --mainBackground: #202d37;
+  --mainBlack: #f9f9f9;
+}
