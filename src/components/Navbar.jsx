@@ -1,7 +1,8 @@
+import Logo from './Logo';
+import Theme from './Theme';
 import { Link } from 'react-router-dom';
-import { Logo, Theme } from '.';
 
-const Navbar = () => {
+function Navbar() {
   return (
     <nav className="navbar">
       <div className="nav-center">
@@ -12,6 +13,6 @@ const Navbar = () => {
       </div>
     </nav>
   );
-};
+}
 
 export default Navbar;

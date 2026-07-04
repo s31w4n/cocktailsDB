@@ -9,32 +9,34 @@ const getStorageTheme = () => {
   return theme;
 };
 
-const Theme = () => {
+function Theme() {
   const [theme, setTheme] = useState(getStorageTheme());
+  const isLightTheme = theme === 'light-theme';
 
   const toggleTheme = () => {
-    if (theme === 'light-theme') {
-      setTheme('dark-theme');
-    } else {
-      setTheme('light-theme');
-    }
+    setTheme(isLightTheme ? 'dark-theme' : 'light-theme');
   };
 
   useEffect(() => {
-    document.body.className = theme;
+    document.documentElement.className = theme;
     localStorage.setItem('theme', theme);
   }, [theme]);
 
   return (
-    <div className="theme" onClick={toggleTheme}>
-      {theme === 'light-theme' ? (
-        <BsMoonFill />
+    <button
+      type="button"
+      className="theme"
+      onClick={toggleTheme}
+      aria-label={`Switch to ${isLightTheme ? 'dark' : 'light'} mode`}
+    >
+      {isLightTheme ? (
+        <BsMoonFill aria-hidden="true" />
       ) : (
-        <BsFillSunFill style={{ color: '#fbbb05' }} />
+        <BsFillSunFill aria-hidden="true" style={{ color: '#fbbb05' }} />
       )}
-      <span> {theme === 'light-theme' ? 'dark' : 'light'} Mode</span>
-    </div>
+      {isLightTheme ? 'dark' : 'light'} Mode
+    </button>
   );
-};
+}
 
 export default Theme;

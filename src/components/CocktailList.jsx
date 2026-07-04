@@ -1,12 +1,18 @@
-import { formatDrinks } from '../utils';
+import Loading from './Loading';
 import Cocktail from './Cocktail';
+import ErrorMessage from './ErrorMessage';
+import { useGlobalContext } from '../context';
 
-const CocktailList = ({ data }) => {
-  if (!data) {
-    return <h4 className="section-title">No matching cocktails found!</h4>;
+function CocktailList() {
+  const { cocktails, loading, error, retry } = useGlobalContext();
+
+  if (loading) {
+    return <Loading />;
   }
 
-  const cocktails = formatDrinks(data);
+  if (error) {
+    return <ErrorMessage message={error} onRetry={retry} />;
+  }
 
   if (cocktails.length < 1) {
     return <h2 className="section-title">no cocktails matched</h2>;
@@ -21,6 +27,6 @@ const CocktailList = ({ data }) => {
       </div>
     </section>
   );
-};
+}
 
 export default CocktailList;

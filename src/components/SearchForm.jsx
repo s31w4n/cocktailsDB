@@ -1,34 +1,47 @@
-import { Form, useNavigation } from 'react-router-dom';
-import { BiSearchAlt2 } from 'react-icons/bi';
 import Filter from './Filter';
+import { useGlobalContext } from '../context';
+import { BiSearchAlt2 } from 'react-icons/bi';
+import { useDebounce } from '../hooks/useDebounce';
+import { useState, useEffect, useRef } from 'react';
 
-const SearchForm = ({ searchTerm }) => {
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === 'submitting';
+const SearchForm = () => {
+  const [query, setQuery] = useState('a');
+
+  const inputRef = useRef(null);
+  const debouncedQuery = useDebounce(query);
+  const { setSearchTerm } = useGlobalContext();
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    setSearchTerm(debouncedQuery);
+  }, [debouncedQuery, setSearchTerm]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSearchTerm(query);
+  };
 
   return (
     <section className="section search">
-      <Form className="search-form">
+      <form className="search-form" onSubmit={handleSubmit}>
         <div className="form-control">
-          <label htmlFor="search">
-            <BiSearchAlt2 />
+          <label htmlFor="cocktail-search">
+            <BiSearchAlt2 aria-hidden="true" />
+            <span className="sr-only">Search cocktails</span>
           </label>
           <input
             type="search"
-            name="search"
-            placeholder="search cocktail 🥂"
-            defaultValue={searchTerm}
-            autoComplete="off"
+            value={query}
+            ref={inputRef}
+            id="cocktail-search"
+            placeholder="search your favorite cocktail 🥂"
+            onChange={(event) => setQuery(event.target.value)}
           />
         </div>
-        <button
-          type="submit"
-          className="btn-primary btn-search"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? 'searching...' : 'search'}
-        </button>
-      </Form>
+      </form>
       <Filter />
     </section>
   );
