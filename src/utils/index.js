@@ -8,19 +8,19 @@ export function formatDrinks(data) {
   const formattedDrinks = data.map((item) => {
     const {
       idDrink,
-      strDrink,
-      strDrinkThumb,
-      strAlcoholic,
       strGlass,
+      strDrink,
       strCategory,
+      strAlcoholic,
+      strDrinkThumb,
     } = item;
 
     return {
       id: idDrink,
       name: strDrink,
-      image: strDrinkThumb,
-      info: strAlcoholic,
       glass: strGlass,
+      info: strAlcoholic,
+      image: strDrinkThumb,
       category: strCategory,
     };
   });
@@ -33,10 +33,10 @@ export function formatSingleDrink(data) {
   const singleDrink = data.drinks[0];
   const {
     strDrink: name,
-    strDrinkThumb: image,
-    strAlcoholic: info,
-    strCategory: category,
     strGlass: glass,
+    strAlcoholic: info,
+    strDrinkThumb: image,
+    strCategory: category,
     strInstructions: instructions,
   } = singleDrink;
 

@@ -1,38 +1,55 @@
-import React, {
-  useMemo,
-  useState,
-  useEffect,
-  useContext,
-  useCallback,
-} from 'react';
 import { searchCocktails } from './api/cocktailDb';
+import React, { useMemo, useState, useEffect, useCallback } from 'react';
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [cocktails, setCocktails] = useState([]);
   const [category, setCategory] = useState('All');
-  const [searchTerm, setSearchTerm] = useState('a');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [loadedTerm, setLoadedTerm] = useState(null);
 
-  const fetchDrinks = useCallback(async () => {
-    setLoading(true);
-    setError(null);
+  const activeTerm = searchTerm || 'a';
+  const loading = loadedTerm !== activeTerm;
+
+  useEffect(() => {
+    let cancelled = false;
+
+    searchCocktails(activeTerm)
+      .then((results) => {
+        if (cancelled) return;
+        setCocktails(results);
+        setError(null);
+        setLoadedTerm(activeTerm);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setError('Something went wrong. Please try again.');
+        setCocktails([]);
+        setLoadedTerm(activeTerm);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [activeTerm]);
+
+  const retry = useCallback(async () => {
+    const term = searchTerm || 'a';
+    setLoadedTerm(null);
+
     try {
-      const results = await searchCocktails(searchTerm);
+      const results = await searchCocktails(term);
       setCocktails(results);
+      setError(null);
+      setLoadedTerm(term);
     } catch {
       setError('Something went wrong. Please try again.');
       setCocktails([]);
+      setLoadedTerm(term);
     }
-    setLoading(false);
   }, [searchTerm]);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    fetchDrinks();
-  }, [fetchDrinks]);
 
   const filteredCocktails = useMemo(() => {
     if (category === 'All') {
@@ -50,18 +67,13 @@ const AppProvider = ({ children }) => {
         category,
         setCategory,
         setSearchTerm,
-        retry: fetchDrinks,
+        retry,
         cocktails: filteredCocktails,
       }}
     >
       {children}
     </AppContext.Provider>
   );
-};
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const useGlobalContext = () => {
-  return useContext(AppContext);
 };
 
 export { AppContext, AppProvider };

@@ -1,7 +1,7 @@
 import Loading from './Loading';
 import Cocktail from './Cocktail';
 import ErrorMessage from './ErrorMessage';
-import { useGlobalContext } from '../context';
+import { useGlobalContext } from '../hooks/useGlobalContext';
 
 function CocktailList() {
   const { cocktails, loading, error, retry } = useGlobalContext();

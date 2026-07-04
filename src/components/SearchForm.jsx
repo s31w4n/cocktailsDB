@@ -1,8 +1,8 @@
 import Filter from './Filter';
-import { useGlobalContext } from '../context';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import { useDebounce } from '../hooks/useDebounce';
 import { useState, useEffect, useRef } from 'react';
+import { useGlobalContext } from '../hooks/useGlobalContext';
 
 const SearchForm = () => {
   const [query, setQuery] = useState('a');

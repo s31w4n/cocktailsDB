@@ -1,5 +1,5 @@
-import { useGlobalContext } from '../context';
 import { useState, useRef, useEffect } from 'react';
+import { useGlobalContext } from '../hooks/useGlobalContext';
 import { IoMdArrowDropup, IoMdArrowDropdown } from 'react-icons/io';
 
 const FILTER_OPTIONS = ['All', 'Cocktail', 'Ordinary Drink', 'Other / Unknown'];
